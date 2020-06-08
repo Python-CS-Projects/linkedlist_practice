@@ -49,11 +49,9 @@ class LinkedList:
             self.tail.set_next(new_node)  # Update next pointer of old tail
             self.tail = new_node
 
-    def remove_head(self):
-
+    def remove_from_tail(self):
         if self.head == None:  # remove from empty LL
             return
-
         if self.head == self.tail:  # remove from LL with 1 elements
             self.head = None
             self.tail = None
@@ -64,6 +62,17 @@ class LinkedList:
                 curr_node.next_node = None
                 return
             curr_node = curr_node.next_node  # move to the next node
+
+    def remove_from_head(self):
+
+        if self.head == None:  # remove from empty LL
+            return
+
+        if self.head == self.tail:  # remove from LL with 1 elements
+            self.head = None
+            self.tail = None
+
+        self.head = self.head.next_node  # set the head as the current head's next
 
     def insert_at(self, value, position):
         pass
