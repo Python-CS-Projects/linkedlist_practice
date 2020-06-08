@@ -64,14 +64,11 @@ class LinkedList:
             curr_node = curr_node.next_node  # move to the next node
 
     def remove_from_head(self):
-
         if self.head == None:  # remove from empty LL
             return
-
         if self.head == self.tail:  # remove from LL with 1 elements
             self.head = None
             self.tail = None
-
         self.head = self.head.next_node  # set the head as the current head's next
 
     def insert_at(self, value, position):
@@ -80,4 +77,19 @@ class LinkedList:
     def contains(self, value):
         cur_node = self.head
         while(cur_node is not None):
+            if cur_node.value is value:
+                return True
             cur_node = cur_node.get_next()
+        return False
+    def print_list(self):
+        curr_node = self.head
+        arr = []
+        while curr_node is not None:
+            arr.append(curr_node.value)
+            curr_node = curr_node.next_node
+        print(arr)
+
+linked_list = LinkedList()
+linked_list.add_to_head(2)
+linked_list.add_to_tail(44)
+linked_list.print_list()
