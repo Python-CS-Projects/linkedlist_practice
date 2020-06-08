@@ -28,7 +28,7 @@ class LinkedList:
         new_node = Node(value)
         # Update pointer of new Node -> head
         new_node.set_next(self.head)
-        
+
         if self.head is None:  # Insert into empty list
             # Mark new Node as "head" and "tail"
             self.head = new_node
@@ -40,28 +40,30 @@ class LinkedList:
     def add_to_tail(self, value):
         # Create new Node with Value
         new_node = Node(value)
-        if self.tail is None: #is LL is empty
+        if self.tail is None:  # is LL is empty
             # Mark new node as head and tail
             self.head = new_node
             self.tail = new_node
         # insert in new list with 1+
-        else:#If is not empty
+        else:  # If is not empty
             self.tail.set_next(new_node)  # Update next pointer of old tail
             self.tail = new_node
 
     def remove_head(self):
-        # remove from empty LL
-        if self.head == None:
+
+        if self.head == None:  # remove from empty LL
             return
-            # remove from LL with 1 elements
-        elif self.head == self.tail:
+
+        if self.head == self.tail:  # remove from LL with 1 elements
             self.head = None
             self.tail = None
-        # General
-        else:
-            self.head = self.head.get_next()
 
-            # STRETCH
+        curr_node = self.head
+        while curr_node is not None:
+            if curr_node.next_node is self.tail:  # triggers if is the node before the last
+                curr_node.next_node = None
+                return
+            curr_node = curr_node.next_node  # move to the next node
 
     def insert_at(self, value, position):
         pass
