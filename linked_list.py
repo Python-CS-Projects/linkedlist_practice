@@ -40,15 +40,13 @@ class LinkedList:
     def add_to_tail(self, value):
         # Create new Node with Value
         new_node = Node(value)
-        # Update next pointer of old tail
-        self.tail.set_next(new_node)
-
-        if self.tail is Node:
+        if self.tail is None: #is LL is empty
             # Mark new node as head and tail
             self.head = new_node
             self.tail = new_node
         # insert in new list with 1+
-        else:
+        else:#If is not empty
+            self.tail.set_next(new_node)  # Update next pointer of old tail
             self.tail = new_node
 
     def remove_head(self):
